@@ -77,6 +77,8 @@ class Metadata extends AbstractMetadata
         // delete espo scheduled jobs
         $data = $this->deleteEspoScheduledJobs($data);
 
+        $data = $this->setEmailTemplateField($data);
+
         return $data;
     }
 
@@ -299,6 +301,26 @@ class Metadata extends AbstractMetadata
             if (isset($data['entityDefs']['ScheduledJob']['jobs'][$job])) {
                 unset($data['entityDefs']['ScheduledJob']['jobs'][$job]);
             }
+        }
+
+        return $data;
+    }
+
+    /**
+     * Set EmailTemplate field
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    protected function setEmailTemplateField(array $data): array
+    {
+        if (!isset($data['entityDefs']['EmailTemplate']['fields']['insertField'])) {
+            $data['entityDefs']['EmailTemplate']['fields']['insertField'] = [
+                'type' => 'base',
+                'notStorable' => true,
+                'emHidden' => true
+            ];
         }
 
         return $data;
