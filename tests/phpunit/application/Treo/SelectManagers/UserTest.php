@@ -32,7 +32,8 @@
  * and "TreoPIM" word.
  */
 
-use Treo\SelectManagers\User;
+namespace Treo\SelectManagers;
+
 use Treo\PHPUnit\Framework\TestCase;
 
 /**
