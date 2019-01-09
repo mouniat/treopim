@@ -32,7 +32,8 @@
  * and "TreoPIM" word.
  */
 
-use Treo\Repositories\Attachment;
+namespace Treo\Repositories;
+
 use Treo\PHPUnit\Framework\TestCase;
 
 /**
